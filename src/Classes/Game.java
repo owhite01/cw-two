@@ -1,4 +1,5 @@
 package Classes;
 
-public class Game {
+public interface Game {
+    void runGames();
 }
