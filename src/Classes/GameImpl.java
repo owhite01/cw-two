@@ -2,14 +2,14 @@ package Classes;
 
 public class GameImpl extends GameAbstractImpl {
 
-    private Renderer myRenderer;
-    private Board myBoard;
+    private Renderer renderer;
+    private Board board;
 
     public GameImpl(boolean easy) {
         super(easy);
 
-        myRenderer = new TextRenderer();
-        myBoard = new Board(4,12);
+        renderer = new TextRenderer();
+        board = new Board(4,12);
     }
 
     @Override
@@ -31,6 +31,6 @@ public class GameImpl extends GameAbstractImpl {
                 "\n" +
                 "You have 12 to guess the answer or you lose the game.");
 
-        myRenderer.renderBoard(myBoard);
+        renderer.renderBoard(board);
     }
 }
