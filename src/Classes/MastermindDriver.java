@@ -6,7 +6,7 @@ public class MastermindDriver {
         Game g = Factory.getInstance(Game.class, true);
         g.runGames();
 
-        g = Factory.getInstance(Game.class, false);
-        g.runGames();
+        //g = Factory.getInstance(Game.class, false);
+        //g.runGames();
     }
 }
