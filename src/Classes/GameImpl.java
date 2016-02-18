@@ -2,8 +2,14 @@ package Classes;
 
 public class GameImpl extends GameAbstractImpl {
 
+    private Renderer myRenderer;
+    private Board myBoard;
+
     public GameImpl(boolean easy) {
         super(easy);
+
+        myRenderer = new TextRenderer();
+        myBoard = new Board(4,12);
     }
 
     @Override
@@ -24,5 +30,7 @@ public class GameImpl extends GameAbstractImpl {
                 "When entering guesses you only need to enter the first character of the color as a capital letter.\n" +
                 "\n" +
                 "You have 12 to guess the answer or you lose the game.");
+
+        myRenderer.renderBoard(myBoard);
     }
 }
