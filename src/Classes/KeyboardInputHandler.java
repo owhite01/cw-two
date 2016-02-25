@@ -2,6 +2,8 @@ package Classes;
 
 public class KeyboardInputHandler implements InputHandler {
 
+    private KeyboardInputValidator inputValidator;
+
     @Override
     public Guess queryGuess() {
 
