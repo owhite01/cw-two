@@ -9,6 +9,10 @@ public class Board {
     private int height;
 
     public Board(int sizeX, int sizeY) {
+        if(sizeX <= 0 || sizeY <= 0) {
+            throw new IllegalArgumentException();
+        }
+
         slots = new Vector<>(sizeX * sizeY);
 
         width = sizeX;
