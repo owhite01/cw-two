@@ -40,4 +40,8 @@ public class Board {
     public int getHeight() {
         return height;
     }
+
+    public void processGuess(Guess guess) {
+
+    }
 }
