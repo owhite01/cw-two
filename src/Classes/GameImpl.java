@@ -6,7 +6,7 @@ import java.util.List;
 public class GameImpl extends GameAbstractImpl {
 
     private Renderer renderer;
-    private Board board;
+    private InputHandler inputHandler;
 
     private int currentState;
     private List<GameState>  gameStates;
@@ -15,13 +15,17 @@ public class GameImpl extends GameAbstractImpl {
        super(easy);
 
         renderer = new TextRenderer();
-        board = new Board(4,12);
+        inputHandler = new KeyboardInputHandler();
 
         gameStates = new ArrayList<>();
 
         IntroState introState = new IntroState();
         introState.init();
         gameStates.add(introState);
+
+        PlayState playState = new PlayState(inputHandler, renderer);
+        playState.init();
+        gameStates.add(playState);
     }
 
     @Override
@@ -31,9 +35,9 @@ public class GameImpl extends GameAbstractImpl {
         gameStates.get(currentState).update();
         gameStates.get(currentState).render();
 
-        Blue newBlue = new Blue();
-        Peg bluePeg = new Peg(newBlue);
-        board.addPeg(bluePeg, 0, 0);
-        renderer.renderBoard(board);
+        currentState++;
+        //TODO this will be turned into a loop rather than executing each state explicitly in order.
+        gameStates.get(currentState).update();
+        gameStates.get(currentState).render();
     }
 }
