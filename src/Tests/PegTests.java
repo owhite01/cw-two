@@ -1,5 +1,6 @@
 package Tests;
 
+import Classes.Blue;
 import org.junit.Test;
 import Classes.Peg;
 
@@ -9,7 +10,8 @@ public class PegTests {
 
     @Test
     public void constructorReturnsExpectedColourAfterCreation(){
-        Peg testPeg = new Peg(Peg.Colour.BLUE);
-        assertEquals(testPeg.getColour(), Peg.Colour.BLUE);
+        Blue testBlue = new Blue();
+        Peg testPeg = new Peg(testBlue);
+        assertEquals(testPeg.getColour().getClass(), Blue.class);
     }
 }

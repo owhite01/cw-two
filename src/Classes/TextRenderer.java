@@ -1,5 +1,6 @@
 package Classes;
 
+
 public class TextRenderer implements Renderer {
 
     @Override
@@ -11,38 +12,7 @@ public class TextRenderer implements Renderer {
             {
                 Peg currentPeg = board.getSlotValue(horizontalPosition, verticalPosition).getPeg();
                 if(currentPeg != null) {
-                    switch (currentPeg.getColour()) {
-                        case BLUE:
-                        {
-                            System.out.print("B");
-                        }
-                        break;
-                        case GREEN:
-                        {
-                            System.out.print("G");
-                        }
-                        break;
-                        case ORANGE:
-                        {
-                            System.out.print("O");
-                        }
-                        break;
-                        case PURPLE:
-                        {
-                            System.out.print("P");
-                        }
-                        break;
-                        case RED:
-                        {
-                            System.out.print("R");
-                        }
-                        break;
-                        case YELLOW:
-                        {
-                            System.out.print("Y");
-                        }
-                        break;
-                    }
+                    currentPeg.getColour().render();
                 }
                 else
                 {

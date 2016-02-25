@@ -31,7 +31,8 @@ public class GameImpl extends GameAbstractImpl {
                 "\n" +
                 "You have 12 to guess the answer or you lose the game.\n");
 
-        Peg bluePeg = new Peg(Peg.Colour.BLUE);
+        Blue newBlue = new Blue();
+        Peg bluePeg = new Peg(newBlue);
         board.addPeg(bluePeg, 0, 0);
         renderer.renderBoard(board);
     }
