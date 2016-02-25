@@ -29,8 +29,10 @@ public class GameImpl extends GameAbstractImpl {
                 "Only the first letter of the color is displayed. B for Blue, R for Red, and so forth.\n" +
                 "When entering guesses you only need to enter the first character of the color as a capital letter.\n" +
                 "\n" +
-                "You have 12 to guess the answer or you lose the game.");
+                "You have 12 to guess the answer or you lose the game.\n");
 
+        Peg bluePeg = new Peg(Peg.Colour.BLUE);
+        board.addPeg(bluePeg, 0, 0);
         renderer.renderBoard(board);
     }
 }

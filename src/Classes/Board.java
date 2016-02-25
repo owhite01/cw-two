@@ -4,28 +4,29 @@ import java.util.Vector;
 
 public class Board {
 
-    private Vector<String> slots;
+    private Vector<Slot> slots;
     private int width;
     private int height;
 
-    public Board(int sizeX, int sizeY)
-    {
+    public Board(int sizeX, int sizeY) {
         slots = new Vector<>(sizeX * sizeY);
 
         width = sizeX;
         height = sizeY;
 
-        for(int verticalPosition = 0; verticalPosition < height; verticalPosition++)
-        {
+        for(int verticalPosition = 0; verticalPosition < height; verticalPosition++) {
             for(int horizontalPosition = 0; horizontalPosition < width; horizontalPosition++) {
-                slots.add(verticalPosition * width + horizontalPosition, ".");
+                slots.add(verticalPosition * width + horizontalPosition, new Slot());
             }
         }
     }
 
-    public String getSlotValue(int posX, int posY)
-    {
+    public Slot getSlotValue(int posX, int posY) {
         return slots.elementAt(posY * width + posX);
+    }
+
+    public void addPeg(Peg peg, int posX, int posY) {
+        slots.elementAt(posY * width + posX).setPeg(peg);
     }
 
     public int getWidth() {
