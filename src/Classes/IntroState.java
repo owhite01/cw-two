@@ -2,8 +2,16 @@ package Classes;
 
 public class IntroState implements GameState {
 
+    private int initialNumberOfRounds;
+
+    public IntroState(int numberOfGuesses) {
+        initialNumberOfRounds = numberOfGuesses;
+    }
+
+
     @Override
     public void init() {
+
 
     }
 
@@ -29,6 +37,6 @@ public class IntroState implements GameState {
                         "Only the first letter of the color is displayed. B for Blue, R for Red, and so forth.\n" +
                         "When entering guesses you only need to enter the first character of the color as a capital letter.\n" +
                         "\n" +
-                        "You have 12 to guess the answer or you lose the game.\n");
+                        "You have " + initialNumberOfRounds + " to guess the answer or you lose the game.\n");
     }
 }

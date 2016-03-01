@@ -7,6 +7,7 @@ public class GameImpl extends GameAbstractImpl {
 
     private Renderer renderer;
     private InputHandler inputHandler;
+    private int numberOfRounds;
 
     private int currentState;
     private List<GameState>  gameStates;
@@ -16,10 +17,10 @@ public class GameImpl extends GameAbstractImpl {
 
         renderer = new TextRenderer();
         inputHandler = new KeyboardInputHandler();
-
+        numberOfRounds = 12;
         gameStates = new ArrayList<>();
 
-        IntroState introState = new IntroState();
+        IntroState introState = new IntroState(numberOfRounds);
         introState.init();
         gameStates.add(introState);
 
