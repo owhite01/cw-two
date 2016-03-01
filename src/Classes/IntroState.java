@@ -3,21 +3,25 @@ package Classes;
 public class IntroState implements GameState {
 
     private int initialNumberOfRounds;
+    private SecretCode secretCode;
+    private boolean isActive;
 
-    public IntroState(int numberOfGuesses) {
+    public IntroState(int numberOfGuesses, SecretCode code) {
         initialNumberOfRounds = numberOfGuesses;
+        secretCode = code;
+        isActive = false;
     }
 
 
     @Override
     public void init() {
-
-
+        isActive = true;
     }
 
     @Override
     public void update() {
-
+        secretCode.generateSecretCode();
+        isActive = false;
     }
 
     @Override
@@ -38,5 +42,10 @@ public class IntroState implements GameState {
                         "When entering guesses you only need to enter the first character of the color as a capital letter.\n" +
                         "\n" +
                         "You have " + initialNumberOfRounds + " to guess the answer or you lose the game.\n");
+    }
+
+    @Override
+    public boolean isFinished() {
+        return !isActive;
     }
 }

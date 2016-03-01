@@ -8,6 +8,7 @@ public class GameImpl extends GameAbstractImpl {
     private Renderer renderer;
     private InputHandler inputHandler;
     private int numberOfRounds;
+    private SecretCode secretCode;
 
     private int currentState;
     private List<GameState>  gameStates;
@@ -20,7 +21,9 @@ public class GameImpl extends GameAbstractImpl {
         numberOfRounds = 12;
         gameStates = new ArrayList<>();
 
-        IntroState introState = new IntroState(numberOfRounds);
+        secretCode = new SecretCode(4);
+
+        IntroState introState = new IntroState(numberOfRounds, secretCode);
         introState.init();
         gameStates.add(introState);
 
@@ -32,13 +35,20 @@ public class GameImpl extends GameAbstractImpl {
     @Override
     public void runGames(){
 
-        //main game loop will happen here.
-        gameStates.get(currentState).update();
-        gameStates.get(currentState).render();
+        //init the initial state.
+        gameStates.get(currentState).init();
 
-        currentState++;
-        //TODO this will be turned into a loop rather than executing each state explicitly in order.
-        gameStates.get(currentState).update();
-        gameStates.get(currentState).render();
+        while(true) {
+            gameStates.get(currentState).update();
+            gameStates.get(currentState).render();
+
+            if(gameStates.get(currentState).isFinished()) {
+                currentState++;
+
+                if(currentState > 1) {
+                    currentState = 0;
+                }
+            }
+        }
     }
 }

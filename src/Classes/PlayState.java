@@ -5,6 +5,7 @@ public class PlayState implements GameState {
     private Renderer renderer;
     private InputHandler inputHandler;
     private Board board;
+    private int playCounter;
 
     public PlayState(InputHandler inInputHandler, Renderer outputRenderer) {
         renderer = outputRenderer;
@@ -22,11 +23,17 @@ public class PlayState implements GameState {
 
     @Override
     public void update() {
-
+        playCounter--;
     }
 
     @Override
     public void render() {
         renderer.renderBoard(board);
+    }
+
+    @Override
+    public boolean isFinished()
+    {
+        return true;
     }
 }

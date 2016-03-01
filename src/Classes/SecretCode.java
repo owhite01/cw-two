@@ -6,10 +6,21 @@ import java.util.Random;
 
 public class SecretCode {
     private List<Peg> pegs;
+    private int pegCount;
 
-    public SecretCode(int pegCount) {
+    public SecretCode(int inPegCount) {
         pegs = new ArrayList<>();
 
+        pegCount = inPegCount;
+        generateSecretCode();
+    }
+
+
+    List<Peg> getPegs() {
+        return pegs;
+    }
+
+    public void generateSecretCode(){
         Random randomGenerator = new Random();
         for(int i = 0; i < pegCount; i++) {
             int chosenColor = randomGenerator.nextInt(6);
@@ -46,12 +57,6 @@ public class SecretCode {
                 }
                 break;
             }
-
         }
-    }
-
-
-    List<Peg> getPegs() {
-        return pegs;
     }
 }
