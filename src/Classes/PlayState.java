@@ -47,11 +47,6 @@ public class PlayState implements GameState {
     @Override
     public boolean isFinished()
     {
-        if(currentPlayCounter == 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return true;
     }
 }
