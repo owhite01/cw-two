@@ -7,6 +7,16 @@ public class GameOverState implements GameState {
     }
 
     @Override
+    public void enter() {
+
+    }
+
+    @Override
+    public void exit() {
+
+    }
+
+    @Override
     public void update() {
     }
 

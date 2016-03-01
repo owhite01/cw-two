@@ -27,7 +27,7 @@ public class GameImpl extends GameAbstractImpl {
         introState.init();
         gameStates.add(introState);
 
-        PlayState playState = new PlayState(inputHandler, renderer);
+        PlayState playState = new PlayState(numberOfRounds, inputHandler, renderer);
         playState.init();
         gameStates.add(playState);
     }
@@ -36,18 +36,22 @@ public class GameImpl extends GameAbstractImpl {
     public void runGames(){
 
         //init the initial state.
-        gameStates.get(currentState).init();
+        gameStates.get(currentState).enter();
 
         while(true) {
             gameStates.get(currentState).update();
             gameStates.get(currentState).render();
 
             if(gameStates.get(currentState).isFinished()) {
-                currentState++;
 
+                gameStates.get(currentState).exit();
+
+                currentState++;
                 if(currentState > 1) {
                     currentState = 0;
                 }
+
+                gameStates.get(currentState).enter();
             }
         }
     }

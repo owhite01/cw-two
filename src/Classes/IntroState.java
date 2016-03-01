@@ -15,7 +15,17 @@ public class IntroState implements GameState {
 
     @Override
     public void init() {
+
+    }
+
+    @Override
+    public void enter() {
         isActive = true;
+    }
+
+    @Override
+    public void exit() {
+        isActive = false;
     }
 
     @Override

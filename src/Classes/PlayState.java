@@ -5,13 +5,16 @@ public class PlayState implements GameState {
     private Renderer renderer;
     private InputHandler inputHandler;
     private Board board;
-    private int playCounter;
+    private int initialPlayCounter;
+    private int currentPlayCounter;
 
-    public PlayState(InputHandler inInputHandler, Renderer outputRenderer) {
+    public PlayState(int numberOfRoundsInGame, InputHandler inInputHandler, Renderer outputRenderer) {
         renderer = outputRenderer;
         inputHandler = inInputHandler;
 
         board = new Board(4,12);
+        initialPlayCounter = numberOfRoundsInGame;
+        currentPlayCounter = numberOfRoundsInGame;
     }
 
     @Override
@@ -22,8 +25,18 @@ public class PlayState implements GameState {
     }
 
     @Override
+    public void enter() {
+        currentPlayCounter = initialPlayCounter;
+    }
+
+    @Override
+    public void exit() {
+
+    }
+
+    @Override
     public void update() {
-        playCounter--;
+        currentPlayCounter--;
     }
 
     @Override
@@ -34,6 +47,11 @@ public class PlayState implements GameState {
     @Override
     public boolean isFinished()
     {
-        return true;
+        if(currentPlayCounter == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
