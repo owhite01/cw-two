@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Guess {
-    public Guess(int pegCount) {
+    private List<Peg> pegList;
+
+    public Guess(List<Peg> pegs) {
+        pegList = pegs;
+
     }
 
-    void setPeg(Peg peg, int index){
-
-    }
-
-    List<Peg> getPegs() {
-        return new ArrayList<>();
+    public List<Peg> getPegs() {
+        return pegList;
     }
 }

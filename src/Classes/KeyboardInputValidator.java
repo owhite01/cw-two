@@ -11,6 +11,7 @@ public class KeyboardInputValidator {
 
     public boolean validate(String input){
         //TODO this should be data driven
+        //TODO should allow users to enter lower case
         String validCharacters = "BGOPRY";
 
         if(input.isEmpty()){
