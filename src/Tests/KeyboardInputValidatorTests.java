@@ -24,5 +24,21 @@ public class KeyboardInputValidatorTests {
 
     }
 
+    @Test
+    public void keyboardValidatorChecksIfTooFewCharactersAreInString(){
+        KeyboardInputValidator keyboardTest = new KeyboardInputValidator(4);
+        String stringLength = "ABC";
+        assertEquals(false, keyboardTest.validate(stringLength));
+
+    }
+
+    @Test
+    public void keyboardValidatorChecksIfValidCharactersArePassed(){
+        KeyboardInputValidator keyboardTest = new KeyboardInputValidator(4);
+        String stringLength = "ABCD";
+        assertEquals(false, keyboardTest.validate(stringLength));
+
+    }
+
 
 }
