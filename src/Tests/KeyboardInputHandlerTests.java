@@ -12,7 +12,7 @@ public class KeyboardInputHandlerTests {
         KeyboardInputHandler testKeyboardHandler = new KeyboardInputHandler(new KeyboardInputValidator(4));
         String testInput = "BYOGRP";
         Guess testGuess = testKeyboardHandler.generateGuessFromString(testInput);
-        assertEquals(4, testGuess.getPegs().size());
+        assertEquals(6, testGuess.getPegs().size());
         assertTrue(testGuess.getPegs().get(0).getColour() instanceof Blue);
         assertTrue(testGuess.getPegs().get(1).getColour() instanceof Yellow);
         assertTrue(testGuess.getPegs().get(2).getColour() instanceof Orange);
