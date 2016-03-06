@@ -7,6 +7,7 @@ public class Board {
     private Vector<Slot> slots;
     private int width;
     private int height;
+    private int nextAvailableSlot;
 
     public Board(int sizeX, int sizeY) {
         if(sizeX <= 0 || sizeY <= 0) {
@@ -17,6 +18,7 @@ public class Board {
 
         width = sizeX;
         height = sizeY;
+        nextAvailableSlot = 0;
 
         for(int verticalPosition = 0; verticalPosition < height; verticalPosition++) {
             for(int horizontalPosition = 0; horizontalPosition < width; horizontalPosition++) {
@@ -41,7 +43,15 @@ public class Board {
         return height;
     }
 
-    public void processGuess(Guess guess) {
+    public void assignGuessToSlots(Guess guess) {
+        if(guess.getPegs().size() > width){
+            throw new IllegalArgumentException("Guess is too big for the board!");
+        }
+
+        for(Peg peg: guess.getPegs()){
+            addPeg(peg, nextAvailableSlot%width, nextAvailableSlot/width);
+            nextAvailableSlot++;
+        }
 
     }
 }

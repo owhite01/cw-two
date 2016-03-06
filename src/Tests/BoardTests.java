@@ -1,8 +1,14 @@
 package Tests;
+import Classes.Blue;
 import Classes.Board;
+import Classes.Peg;
 import Classes.Slot;
+import Classes.Guess;
 import org.junit.Test;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -35,6 +41,45 @@ public class BoardTests {
         Slot testSlot = newBoard.getSlotValue(8,8);
 
         assertNotEquals(testSlot, null);
+    }
+
+    @Test (expected=IllegalArgumentException.class)
+    public void boardThrowsIfGuessHasMorePegsThanWidthOfTheBoard(){
+        Board newBoard = new Board(4,4);
+        List<Peg> pegList = new ArrayList<>(5);
+        for(int i = 0; i<5; i++){
+            pegList.add(new Peg(new Blue()));
+        }
+        Guess testGuess = new Guess(pegList);
+        newBoard.assignGuessToSlots(testGuess);
+
+    }
+
+    @Test
+    public void boardAssignsCorrectSlotsFromGuess(){
+        Board newBoard = new Board(4,4);
+        List<Peg> pegList = new ArrayList<>(4);
+        for(int i = 0; i<4; i++){
+            pegList.add(new Peg(new Blue()));
+        }
+        Guess testGuess = new Guess(pegList);
+        newBoard.assignGuessToSlots(testGuess);
+
+        assertTrue(newBoard.getSlotValue(0,0).getPeg().getColour() instanceof Blue);
+        assertTrue(newBoard.getSlotValue(1,0).getPeg().getColour() instanceof Blue);
+        assertTrue(newBoard.getSlotValue(2,0).getPeg().getColour() instanceof Blue);
+        assertTrue(newBoard.getSlotValue(3,0).getPeg().getColour() instanceof Blue);
+
+    }
+
+    @Test
+    public void boardInsertsGuessAfterEachOtherAsExpected(){
+
+    }
+
+    @Test (expected=IllegalArgumentException.class)
+    public void boardThrowsIfUserInsertsMoreGuessesThanTheBoardCanContain(){
+
     }
 
 }

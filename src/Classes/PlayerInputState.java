@@ -27,7 +27,9 @@ public class PlayerInputState implements GameState {
     public void update() {
         System.out.println("What is your next guess?\n" +
                 "Type in the characters for your guess and press enter.");
-        inputHandler.queryGuess();
+        Guess userGuess = inputHandler.queryGuess();
+
+
     }
 
     @Override
