@@ -5,18 +5,36 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class KeyboardInputHandler implements InputHandler {
+    //TODO add mock for the bufferreader to enable testing
+    //TODO create a guess factory taking a string
 
     private KeyboardInputValidator inputValidator;
+
+    public KeyboardInputHandler(KeyboardInputValidator inputValidator) {
+        this.inputValidator = inputValidator;
+    }
 
     @Override
     public Guess queryGuess() {
         try {
-            BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-            String s = bufferRead.readLine();
+            boolean validInput = false;
+            String s = "";
+            while(validInput == false){
+                BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+                s = bufferRead.readLine();
+                if(inputValidator.validate(s) == true){
+                    validInput = true;
+                }
+                else{
+                    System.out.println("Invalid input!");
+                }
+            }
+
         }
         catch (IOException e) {
             System.out.println(e.toString());
         }
+
 
         return new Guess(5);
     }

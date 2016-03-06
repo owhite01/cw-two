@@ -17,10 +17,13 @@ public class GameImpl extends GameAbstractImpl {
        super(easy);
 
         renderer = new TextRenderer();
-        inputHandler = new KeyboardInputHandler();
+        //TODO create a keyboard inptut validator factory
+        //TODO data drives the validator input
+        inputHandler = new KeyboardInputHandler(new KeyboardInputValidator(4));
+        //TODO data drives the number of rounds
         numberOfRounds = 12;
         gameStates = new ArrayList<>();
-
+        //TODO data drives the length of the secret code
         secretCode = new SecretCode(4);
 
         IntroState introState = new IntroState(numberOfRounds, secretCode);
