@@ -33,10 +33,6 @@ public class GameImpl extends GameAbstractImpl {
         PlayState playState = new PlayState(numberOfRounds, inputHandler, renderer);
         playState.init();
         gameStates.add(playState);
-
-        PlayerInputState playerInputState = new PlayerInputState(inputHandler);
-        playerInputState.init();
-        gameStates.add(playerInputState);
     }
 
     @Override

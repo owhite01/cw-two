@@ -31,7 +31,7 @@ public class Board {
         return slots.elementAt(posY * width + posX);
     }
 
-    public void addPeg(Peg peg, int posX, int posY) {
+    private void addPeg(Peg peg, int posX, int posY) {
         slots.elementAt(posY * width + posX).setPeg(peg);
     }
 

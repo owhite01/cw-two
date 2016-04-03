@@ -19,9 +19,6 @@ public class PlayState implements GameState {
 
     @Override
     public void init() {
-        Blue newBlue = new Blue();
-        Peg bluePeg = new Peg(newBlue);
-        board.addPeg(bluePeg, 0, 0);
     }
 
     @Override
@@ -36,6 +33,10 @@ public class PlayState implements GameState {
 
     @Override
     public void update() {
+        System.out.println("What is your next guess?\n" +
+                "Type in the characters for your guess and press enter.");
+        Guess userGuess = inputHandler.queryGuess();
+        board.assignGuessToSlots(userGuess);
         currentPlayCounter--;
     }
 
@@ -47,6 +48,6 @@ public class PlayState implements GameState {
     @Override
     public boolean isFinished()
     {
-        return true;
+        return false;
     }
 }
