@@ -37,6 +37,8 @@ public class GameImpl extends GameAbstractImpl {
         PlayerInputState playerInputState = new PlayerInputState(inputHandler);
         playerInputState.init();
         gameStates.add(playerInputState);
+
+        System.out.println("hi");
     }
 
     @Override
