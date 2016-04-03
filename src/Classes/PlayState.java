@@ -33,16 +33,20 @@ public class PlayState implements GameState {
 
     @Override
     public void update() {
+        System.out.println("You have " + currentPlayCounter + " guesses left");
+        System.out.println("");
         System.out.println("What is your next guess?\n" +
                 "Type in the characters for your guess and press enter.");
         Guess userGuess = inputHandler.queryGuess();
         board.assignGuessToSlots(userGuess);
+        renderer.renderBoard(board);
+        System.out.println("");
         currentPlayCounter--;
+
     }
 
     @Override
     public void render() {
-        renderer.renderBoard(board);
     }
 
     @Override

@@ -55,8 +55,6 @@ public class IntroState implements GameState {
 
         System.out.println();
         System.out.println("Generating secret code ....");
-
-        System.out.println("You have " + initialNumberOfRounds + " guesses left.");
     }
 
     @Override

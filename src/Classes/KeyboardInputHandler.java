@@ -39,7 +39,7 @@ public class KeyboardInputHandler implements InputHandler {
             System.out.println(e.toString());
         }
 
-
+        System.out.println("");
         return generateGuessFromString(userInput);
     }
 
