@@ -5,35 +5,41 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import static org.junit.Assert.*;
 
 public class BoardTests {
     @Test
     public void constructorCreatesBoardWithExpectedDimension(){
-        Board newBoard = new Board(5,5);
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(5,5, secretCode);
         assertEquals(newBoard.getHeight(), 5);
         assertEquals(newBoard.getWidth(), 5);
     }
     @Test(expected=IllegalArgumentException.class)
     public void constructorCreatesThrowsExceptionWhenNegativeValuesArePassed(){
-        Board newBoard = new Board(-5,-5);
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(-5,-5, secretCode);
     }
 
     @Test(expected=IllegalArgumentException.class)
     public void constructorCreatesThrowsExceptionWhenZeroValuesArePassed(){
-        Board newBoard = new Board(0,0);
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(0,0, secretCode);
     }
 
     @Test(expected=ArrayIndexOutOfBoundsException.class)
     public void getSlotReturnsValueOutOfRangeWhenPassedTooLargeValues(){
-        Board newBoard = new Board(9,9);
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(9,9, secretCode);
         newBoard.getSlotValue(10,10);
     }
 
     @Test
     public void getSlotReturnsAValidSlotWhenPassedValidValues() {
-        Board newBoard = new Board(9,9);
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(9,9, secretCode);
         Slot testSlot = newBoard.getSlotValue(8,8);
 
         assertNotEquals(testSlot, null);
@@ -41,8 +47,9 @@ public class BoardTests {
 
     @Test (expected=IllegalArgumentException.class)
     public void boardThrowsIfGuessHasMorePegsThanWidthOfTheBoard(){
-        Board newBoard = new Board(4,4);
-        List<Peg> pegList = new ArrayList<>(5);
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(4,4, secretCode);
+        Vector<Peg> pegList = new Vector<>(5);
         for(int i = 0; i<5; i++){
             pegList.add(new Peg(new Blue()));
         }
@@ -53,8 +60,9 @@ public class BoardTests {
 
     @Test
     public void boardAssignsCorrectSlotsFromGuess(){
-        Board newBoard = new Board(4,4);
-        List<Peg> pegList = new ArrayList<>(4);
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(4,4, secretCode);
+        Vector<Peg> pegList = new Vector<>(4);
         for(int i = 0; i<4; i++){
             pegList.add(new Peg(new Blue()));
         }
@@ -70,8 +78,9 @@ public class BoardTests {
 
     @Test
     public void boardInsertsGuessAfterEachOtherAsExpected(){
-        Board newBoard = new Board(4,4);
-        List<Peg> pegList = new ArrayList<>(4);
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(4,4, secretCode);
+        Vector<Peg> pegList = new Vector<>(4);
         pegList.add(new Peg(new Blue()));
         pegList.add(new Peg(new Red()));
         pegList.add(new Peg(new Yellow()));
@@ -100,8 +109,9 @@ public class BoardTests {
 
     @Test (expected=IndexOutOfBoundsException.class)
     public void boardThrowsIfUserInsertsMoreGuessesThanTheBoardCanContain(){
-        Board newBoard = new Board(4,4);
-        List<Peg> pegList = new ArrayList<>(4);
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(4,4, secretCode);
+        Vector<Peg> pegList = new Vector<>(4);
         pegList.add(new Peg(new Blue()));
         pegList.add(new Peg(new Red()));
         pegList.add(new Peg(new Yellow()));

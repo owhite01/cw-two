@@ -9,11 +9,11 @@ public class PlayState implements GameState {
     private int currentPlayCounter;
     private boolean stateActive;
 
-    public PlayState(int numberOfRoundsInGame, InputHandler inInputHandler, Renderer outputRenderer) {
+    public PlayState(int numberOfRoundsInGame, InputHandler inInputHandler, Renderer outputRenderer, SecretCode secretCode) {
         renderer = outputRenderer;
         inputHandler = inInputHandler;
 
-        board = new Board(4,12);
+        board = new Board(4,12, secretCode);
         initialPlayCounter = numberOfRoundsInGame;
         currentPlayCounter = numberOfRoundsInGame;
     }

@@ -3,8 +3,7 @@ package Classes;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Vector;
 
 public class KeyboardInputHandler implements InputHandler {
     //TODO add mock for the bufferreader to enable testing
@@ -45,7 +44,7 @@ public class KeyboardInputHandler implements InputHandler {
 
     //TODO make this private and use reflection to validate this
     public Guess generateGuessFromString(String input){
-        List<Peg> pegList = new ArrayList<>();
+        Vector<Peg> pegList = new Vector<>();
         //TODO change this to use colour factory
         for(char ch: input.toCharArray()){
             switch(ch){

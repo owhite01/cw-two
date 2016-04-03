@@ -30,7 +30,7 @@ public class GameImpl extends GameAbstractImpl {
         introState.init();
         gameStates.add(introState);
 
-        PlayState playState = new PlayState(numberOfRounds, inputHandler, renderer);
+        PlayState playState = new PlayState(numberOfRounds, inputHandler, renderer, secretCode);
         playState.init();
         gameStates.add(playState);
 

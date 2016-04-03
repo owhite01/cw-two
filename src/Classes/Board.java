@@ -5,12 +5,15 @@ import java.util.Vector;
 public class Board {
 
     private Vector<Slot> slots;
-    private Vector<ResultPeg> resultPegs;
+    private SecretCode secretCode;
+    private Vector<Result> results;
     private int width;
     private int height;
     private int nextAvailableSlot;
 
-    public Board(int sizeX, int sizeY) {
+    public Board(int sizeX, int sizeY, SecretCode inSecretCode) {
+        secretCode = inSecretCode;
+
         if (sizeX <= 0 || sizeY <= 0) {
             throw new IllegalArgumentException();
         }
@@ -27,7 +30,7 @@ public class Board {
             }
         }
 
-        resultPegs = new Vector<>(sizeY);
+        results = new Vector<>(sizeY);
 
     }
 
@@ -55,7 +58,27 @@ public class Board {
         for(Peg peg: guess.getPegs()){
             addPeg(peg, nextAvailableSlot%width, nextAvailableSlot/width);
             nextAvailableSlot++;
-        }
 
+        }
+        Result newResult = new Result();
+        int blackPegCount = 0;
+
+/*        for(int pegindex = 0; pegindex < guess.getPegs().size(); pegindex++){
+            Peg secretCodePeg = secretCode.getPegs().elementAt(pegindex);
+            Peg guessPeg = guess.getPegs().elementAt(pegindex);
+            
+            //Check if current peg is black
+            if(secretCodePeg.getClass().equals(guessPeg.getClass())){
+                blackPegCount++;
+            }else{
+                if()
+            }
+
+
+        }*/
+    }
+
+    public Vector<Result> getResults() {
+        return results;
     }
 }

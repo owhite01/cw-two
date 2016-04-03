@@ -3,20 +3,21 @@ package Classes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Vector;
 
 public class SecretCode {
-    private List<Peg> pegs;
+    private Vector<Peg> pegs;
     private int pegCount;
 
     public SecretCode(int inPegCount) {
-        pegs = new ArrayList<>();
+        pegs = new Vector<>();
 
         pegCount = inPegCount;
         generateSecretCode();
     }
 
 
-    List<Peg> getPegs() {
+    Vector<Peg> getPegs() {
         return pegs;
     }
 

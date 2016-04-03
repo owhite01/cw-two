@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import static org.junit.Assert.*;
 
@@ -13,7 +14,7 @@ import static org.junit.Assert.*;
 public class GuessTests {
     @Test
     public void guessOnlyContainsTheExpectedNumberOfPegs(){
-        List<Peg> pegList = new ArrayList<>(4);
+        Vector<Peg> pegList = new Vector<>(4);
         for(int i = 0; i<4; i++){
             pegList.add(new Peg(new Blue()));
         }

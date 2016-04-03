@@ -2,16 +2,17 @@ package Classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class Guess {
-    private List<Peg> pegList;
+    private Vector<Peg> pegList;
 
-    public Guess(List<Peg> pegs) {
+    public Guess(Vector<Peg> pegs) {
         pegList = pegs;
 
     }
 
-    public List<Peg> getPegs() {
+    public Vector<Peg> getPegs() {
         return pegList;
     }
 }
