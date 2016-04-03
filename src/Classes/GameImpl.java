@@ -33,6 +33,11 @@ public class GameImpl extends GameAbstractImpl {
         PlayState playState = new PlayState(numberOfRounds, inputHandler, renderer);
         playState.init();
         gameStates.add(playState);
+
+        GameOverState gameOverState = new GameOverState();
+        gameOverState.init();
+        gameStates.add(gameOverState);
+
     }
 
     @Override
@@ -50,7 +55,7 @@ public class GameImpl extends GameAbstractImpl {
                 gameStates.get(currentState).exit();
 
                 currentState++;
-                if(currentState > 2) {
+                if(currentState > gameStates.size()) {
                     currentState = 0;
                 }
 

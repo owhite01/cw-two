@@ -7,6 +7,7 @@ public class PlayState implements GameState {
     private Board board;
     private int initialPlayCounter;
     private int currentPlayCounter;
+    private boolean stateActive;
 
     public PlayState(int numberOfRoundsInGame, InputHandler inInputHandler, Renderer outputRenderer) {
         renderer = outputRenderer;
@@ -24,6 +25,7 @@ public class PlayState implements GameState {
     @Override
     public void enter() {
         currentPlayCounter = initialPlayCounter;
+        stateActive = true;
     }
 
     @Override
@@ -43,6 +45,11 @@ public class PlayState implements GameState {
         System.out.println("");
         currentPlayCounter--;
 
+        if(currentPlayCounter == 0){
+            System.out.println("You did not solve the puzzle. Too bad.");
+            stateActive = false;
+        }
+
     }
 
     @Override
@@ -52,6 +59,6 @@ public class PlayState implements GameState {
     @Override
     public boolean isFinished()
     {
-        return false;
+        return !stateActive;
     }
 }
