@@ -5,12 +5,13 @@ import java.util.Vector;
 public class Board {
 
     private Vector<Slot> slots;
+    private Vector<ResultPeg> resultPegs;
     private int width;
     private int height;
     private int nextAvailableSlot;
 
     public Board(int sizeX, int sizeY) {
-        if(sizeX <= 0 || sizeY <= 0) {
+        if (sizeX <= 0 || sizeY <= 0) {
             throw new IllegalArgumentException();
         }
 
@@ -20,11 +21,14 @@ public class Board {
         height = sizeY;
         nextAvailableSlot = 0;
 
-        for(int verticalPosition = 0; verticalPosition < height; verticalPosition++) {
-            for(int horizontalPosition = 0; horizontalPosition < width; horizontalPosition++) {
+        for (int verticalPosition = 0; verticalPosition < height; verticalPosition++) {
+            for (int horizontalPosition = 0; horizontalPosition < width; horizontalPosition++) {
                 slots.add(verticalPosition * width + horizontalPosition, new Slot());
             }
         }
+
+        resultPegs = new Vector<>(sizeY);
+
     }
 
     public Slot getSlotValue(int posX, int posY) {
