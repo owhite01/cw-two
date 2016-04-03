@@ -1,9 +1,5 @@
 package Tests;
-import Classes.Blue;
-import Classes.Board;
-import Classes.Peg;
-import Classes.Slot;
-import Classes.Guess;
+import Classes.*;
 import org.junit.Test;
 
 
@@ -74,11 +70,49 @@ public class BoardTests {
 
     @Test
     public void boardInsertsGuessAfterEachOtherAsExpected(){
+        Board newBoard = new Board(4,4);
+        List<Peg> pegList = new ArrayList<>(4);
+        pegList.add(new Peg(new Blue()));
+        pegList.add(new Peg(new Red()));
+        pegList.add(new Peg(new Yellow()));
+        pegList.add(new Peg(new Purple()));
+
+        Guess testGuess = new Guess(pegList);
+        newBoard.assignGuessToSlots(testGuess);
+        newBoard.assignGuessToSlots(testGuess);
+
+
+        assertTrue(newBoard.getSlotValue(0,0).getPeg().getColour() instanceof Blue);
+        assertTrue(newBoard.getSlotValue(1,0).getPeg().getColour() instanceof Red);
+        assertTrue(newBoard.getSlotValue(2,0).getPeg().getColour() instanceof Yellow);
+        assertTrue(newBoard.getSlotValue(3,0).getPeg().getColour() instanceof Purple);
+
+        assertTrue(newBoard.getSlotValue(0,1).getPeg().getColour() instanceof Blue);
+        assertTrue(newBoard.getSlotValue(1,1).getPeg().getColour() instanceof Red);
+        assertTrue(newBoard.getSlotValue(2,1).getPeg().getColour() instanceof Yellow);
+        assertTrue(newBoard.getSlotValue(3,1).getPeg().getColour() instanceof Purple);
+
+
+
+
 
     }
 
-    @Test (expected=IllegalArgumentException.class)
+    @Test (expected=IndexOutOfBoundsException.class)
     public void boardThrowsIfUserInsertsMoreGuessesThanTheBoardCanContain(){
+        Board newBoard = new Board(4,4);
+        List<Peg> pegList = new ArrayList<>(4);
+        pegList.add(new Peg(new Blue()));
+        pegList.add(new Peg(new Red()));
+        pegList.add(new Peg(new Yellow()));
+        pegList.add(new Peg(new Purple()));
+
+        Guess testGuess = new Guess(pegList);
+        for(int i = 0; i<20;i++){
+            newBoard.assignGuessToSlots(testGuess);
+        }
+
+
 
     }
 
