@@ -29,6 +29,7 @@ public class GameOverState implements GameState {
         try{
             BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
             userInput = bufferRead.readLine();
+            //TODO add a check to determine if user wants to quit the game.
 
         }catch (IOException e) {
             System.out.println(e.toString());

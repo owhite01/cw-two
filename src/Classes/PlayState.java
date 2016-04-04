@@ -43,6 +43,12 @@ public class PlayState implements GameState {
         board.assignGuessToSlots(userGuess);
         renderer.renderBoard(board);
         System.out.println("");
+
+        if(checkWinCondition()){
+            System.out.println("You solved the puzzle! Good job.");
+            stateActive = false;
+        }
+
         currentPlayCounter--;
 
         if(currentPlayCounter == 0){
@@ -60,5 +66,21 @@ public class PlayState implements GameState {
     public boolean isFinished()
     {
         return !stateActive;
+    }
+
+    private boolean checkWinCondition() {
+        Result latestResult = board.getResults().lastElement();
+
+        if(latestResult.getPegs().size() < board.getWidth()){
+            return false;
+        }
+
+        for(ResultPeg resultPeg: latestResult.getPegs()){
+            if(!(resultPeg instanceof BlackResultPeg)){
+                return false;
+            }
+        }
+
+        return true;
     }
 }
