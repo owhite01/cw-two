@@ -5,8 +5,8 @@ import java.util.Vector;
 public class Result {
     private Vector<ResultPeg> pegs;
 
-    public void setPegs(Vector<ResultPeg> pegs) {
-        this.pegs = pegs;
+    public Result() {
+        pegs = new Vector<>();
     }
 
     public Vector<ResultPeg> getPegs() {

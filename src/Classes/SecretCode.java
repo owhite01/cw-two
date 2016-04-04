@@ -21,7 +21,10 @@ public class SecretCode {
         return pegs;
     }
 
+    //TODO make sure that ensures that there are no duplications.
     public void generateSecretCode(){
+        pegs.clear();
+
         Random randomGenerator = new Random();
         for(int i = 0; i < pegCount; i++) {
             int chosenColor = randomGenerator.nextInt(6);

@@ -1,5 +1,6 @@
 package Classes;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 public class Board {
@@ -31,7 +32,6 @@ public class Board {
         }
 
         results = new Vector<>(sizeY);
-
     }
 
     public Slot getSlotValue(int posX, int posY) {
@@ -58,24 +58,54 @@ public class Board {
         for(Peg peg: guess.getPegs()){
             addPeg(peg, nextAvailableSlot%width, nextAvailableSlot/width);
             nextAvailableSlot++;
-
         }
+
         Result newResult = new Result();
+
+        int whitePegCount = 0;
         int blackPegCount = 0;
 
-/*        for(int pegindex = 0; pegindex < guess.getPegs().size(); pegindex++){
-            Peg secretCodePeg = secretCode.getPegs().elementAt(pegindex);
-            Peg guessPeg = guess.getPegs().elementAt(pegindex);
-            
+        Boolean[] verifiedSlots = new Boolean[guess.getPegs().size()];
+        Arrays.fill(verifiedSlots, false);
+
+        //first check for black pegs
+        for(int pegIndex = 0; pegIndex < guess.getPegs().size(); pegIndex++) {
+            Peg secretCodePeg = secretCode.getPegs().elementAt(pegIndex);
+            Peg guessPeg = guess.getPegs().elementAt(pegIndex);
+
             //Check if current peg is black
-            if(secretCodePeg.getClass().equals(guessPeg.getClass())){
+            if(secretCodePeg.getColour().getClass().equals(guessPeg.getColour().getClass())){
                 blackPegCount++;
-            }else{
-                if()
+                verifiedSlots[pegIndex] = true;
             }
+        }
 
+        for(int pegIndex = 0; pegIndex < guess.getPegs().size(); pegIndex++){
+            Peg guessPeg = guess.getPegs().elementAt(pegIndex);
 
-        }*/
+            for(int whitePegCheckIndex = 0; whitePegCheckIndex < guess.getPegs().size(); whitePegCheckIndex++) {
+                if (whitePegCheckIndex != pegIndex) {
+                    Peg whiteCheckPeg = secretCode.getPegs().elementAt(whitePegCheckIndex);
+                    if (whiteCheckPeg.getColour().getClass().equals(guessPeg.getColour().getClass())) {
+                         if (!verifiedSlots[whitePegCheckIndex]) {
+                             whitePegCount++;
+                             verifiedSlots[whitePegCheckIndex] = true;
+                             break;
+                         }
+                    }
+                }
+            }
+        }
+
+        for(int blackPegCountIndex = 0; blackPegCountIndex < blackPegCount; blackPegCountIndex++){
+            newResult.getPegs().add(new BlackResultPeg());
+        }
+
+        for(int whitePegCountIndex = 0; whitePegCountIndex < whitePegCount; whitePegCountIndex++){
+            newResult.getPegs().add(new WhiteResultPeg());
+        }
+
+        results.add(newResult);
     }
 
     public Vector<Result> getResults() {
