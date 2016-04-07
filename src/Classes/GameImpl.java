@@ -17,13 +17,12 @@ public class GameImpl extends GameAbstractImpl {
        super(easy);
 
         renderer = RendererFactory.generateRenderer();
-        //TODO data drives the validator input
-        inputHandler = InputHandlerFactory.generateInputHandler(4);
-        //TODO data drives the number of rounds
-        numberOfRounds = 12;
+        inputHandler = InputHandlerFactory.generateInputHandler(Settings.CodeLength);
+        numberOfRounds = Settings.NumberOfRounds;
+
         gameStates = new ArrayList<>();
         //TODO data drives the length of the secret code
-        secretCode = new SecretCode(4);
+        secretCode = new SecretCode(Settings.CodeLength);
 
         IntroState introState = new IntroState(numberOfRounds, secretCode);
         introState.init();

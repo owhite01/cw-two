@@ -15,7 +15,7 @@ public class PlayState implements GameState {
         renderer = outputRenderer;
         inputHandler = inInputHandler;
 
-        board = new Board(4,12, inSecretCode);
+        board = new Board(Settings.CodeLength, Settings.NumberOfRounds, inSecretCode);
         initialPlayCounter = numberOfRoundsInGame;
         currentPlayCounter = numberOfRoundsInGame;
         shouldShowSecretCode = showSecretCode;
