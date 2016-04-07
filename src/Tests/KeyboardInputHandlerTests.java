@@ -19,10 +19,6 @@ public class KeyboardInputHandlerTests {
         assertTrue(testGuess.getPegs().get(3).getColour() instanceof Green);
         assertTrue(testGuess.getPegs().get(4).getColour() instanceof Red);
         assertTrue(testGuess.getPegs().get(5).getColour() instanceof Purple);
-
-
-
-
     }
 
 }

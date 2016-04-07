@@ -30,12 +30,6 @@ public class IntroState implements GameState {
 
     @Override
     public void update() {
-        secretCode.generateSecretCode();
-        isActive = false;
-    }
-
-    @Override
-    public void render() {
         System.out.println("Welcome to Mastermind.");
         System.out.print("This is a text version of the classic board game Mastermind.\n" +
                 "The computer will think of a secret code.\n" +
@@ -55,6 +49,9 @@ public class IntroState implements GameState {
 
         System.out.println();
         System.out.println("Generating secret code ....");
+
+        secretCode.generateSecretCode();
+        isActive = false;
     }
 
     @Override

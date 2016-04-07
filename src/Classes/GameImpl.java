@@ -49,7 +49,6 @@ public class GameImpl extends GameAbstractImpl {
         //TODO make this loop quit if the user chooses to end the game.
         while(true) {
             gameStates.get(currentState).update();
-            gameStates.get(currentState).render();
 
             if(gameStates.get(currentState).isFinished()) {
 

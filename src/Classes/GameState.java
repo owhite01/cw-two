@@ -5,7 +5,6 @@ public interface GameState {
     void enter();
     void exit();
     void update();
-    void render();
     boolean isFinished();
 
 }
