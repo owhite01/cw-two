@@ -8,14 +8,18 @@ public class PlayState implements GameState {
     private int initialPlayCounter;
     private int currentPlayCounter;
     private boolean stateActive;
+    private boolean shouldShowSecretCode;
+    private SecretCode secretCode;
 
-    public PlayState(int numberOfRoundsInGame, InputHandler inInputHandler, Renderer outputRenderer, SecretCode secretCode) {
+    public PlayState(int numberOfRoundsInGame, InputHandler inInputHandler, Renderer outputRenderer, boolean showSecretCode, SecretCode inSecretCode) {
         renderer = outputRenderer;
         inputHandler = inInputHandler;
 
-        board = new Board(4,12, secretCode);
+        board = new Board(4,12, inSecretCode);
         initialPlayCounter = numberOfRoundsInGame;
         currentPlayCounter = numberOfRoundsInGame;
+        shouldShowSecretCode = showSecretCode;
+        secretCode = inSecretCode;
     }
 
     @Override
@@ -39,8 +43,20 @@ public class PlayState implements GameState {
         System.out.println("");
         System.out.println("What is your next guess?\n" +
                 "Type in the characters for your guess and press enter.");
+
         Guess userGuess = inputHandler.queryGuess();
         board.assignGuessToSlots(userGuess);
+
+        if(shouldShowSecretCode) {
+            for(Peg peg : secretCode.getPegs()) {
+                peg.getColour().render();
+            }
+            System.out.println(" Secret Code");
+        }
+        else {
+            System.out.println(".... Secret Code");
+        }
+
         renderer.renderBoard(board);
         System.out.println("");
 

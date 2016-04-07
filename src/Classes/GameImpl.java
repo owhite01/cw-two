@@ -30,7 +30,7 @@ public class GameImpl extends GameAbstractImpl {
         introState.init();
         gameStates.add(introState);
 
-        PlayState playState = new PlayState(numberOfRounds, inputHandler, renderer, secretCode);
+        PlayState playState = new PlayState(numberOfRounds, inputHandler, renderer, ShouldShowCode(), secretCode);
         playState.init();
         gameStates.add(playState);
 
@@ -46,6 +46,7 @@ public class GameImpl extends GameAbstractImpl {
         //init the initial state.
         gameStates.get(currentState).enter();
 
+        //TODO make this loop quit if the user chooses to end the game.
         while(true) {
             gameStates.get(currentState).update();
             gameStates.get(currentState).render();
