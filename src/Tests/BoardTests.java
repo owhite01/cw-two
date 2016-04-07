@@ -231,12 +231,4 @@ public class BoardTests {
         assertEquals(0, resultPegs.size());
 
     }
-
-
-
-    @Test
-    public void ensureMaxLengthOfResultListIsLengthOfSecretCode(){
-
-    }
-
 }
