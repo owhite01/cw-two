@@ -7,7 +7,6 @@ import java.util.Vector;
 
 public class KeyboardInputHandler implements InputHandler {
     //TODO add mock for the bufferreader to enable testing
-    //TODO create a guess factory taking a string
     //TODO replace systemout with observer pattern for the renderer
 
     private KeyboardInputValidator inputValidator;
@@ -21,11 +20,11 @@ public class KeyboardInputHandler implements InputHandler {
         String userInput = "";
         try {
             boolean validInput = false;
-            while(validInput == false){
+            while(!validInput){
                 System.out.print("Enter guess:");
                 BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
                 userInput = bufferRead.readLine();
-                if(inputValidator.validate(userInput) == true){
+                if(inputValidator.validate(userInput)){
                     validInput = true;
                 }
                 else{
@@ -42,45 +41,13 @@ public class KeyboardInputHandler implements InputHandler {
         return generateGuessFromString(userInput);
     }
 
-    //TODO make this private and use reflection to validate this
     public Guess generateGuessFromString(String input){
         Vector<Peg> pegList = new Vector<>();
-        //TODO change this to use colour factory
+        ColourFactory colourFactory = new ColourFactory();
         for(char ch: input.toCharArray()){
-            switch(ch){
-                case 'B':{
-                    pegList.add(new Peg(new Blue()));
-                }
-                break;
-
-                case 'G':{
-                    pegList.add(new Peg(new Green()));
-                }
-                break;
-
-                case 'O':{
-                    pegList.add(new Peg(new Orange()));
-                }
-                break;
-
-                case 'P':{
-                    pegList.add(new Peg(new Purple()));
-                }
-                break;
-
-                case 'R':{
-                    pegList.add(new Peg(new Red()));
-                }
-                break;
-
-                case 'Y':{
-                    pegList.add(new Peg(new Yellow()));
-                }
-                break;
-            }
+            pegList.add(new Peg(colourFactory.generateColour(ch)));
         }
 
         return new Guess(pegList);
-
     }
 }
