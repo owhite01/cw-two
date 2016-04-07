@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class ColourFactory {
 
-    public Colour generateColour(char ch) {
+    public static Colour generateColour(char ch) {
         switch(ch){
             case 'B':{
                 return new Blue();
@@ -29,7 +29,7 @@ public class ColourFactory {
         return null;
     }
 
-    public Colour generateRandomColour(){
+    public static Colour generateRandomColour(){
         Random randomGenerator = new Random();
 
         int chosenColor = randomGenerator.nextInt(6);

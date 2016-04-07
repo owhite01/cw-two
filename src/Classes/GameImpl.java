@@ -16,10 +16,9 @@ public class GameImpl extends GameAbstractImpl {
     public GameImpl(boolean easy) {
        super(easy);
 
-        renderer = new TextRenderer();
-        //TODO create a keyboard inptut validator factory
+        renderer = RendererFactory.generateRenderer();
         //TODO data drives the validator input
-        inputHandler = new KeyboardInputHandler(new KeyboardInputValidator(4));
+        inputHandler = InputHandlerFactory.generateInputHandler(4);
         //TODO data drives the number of rounds
         numberOfRounds = 12;
         gameStates = new ArrayList<>();

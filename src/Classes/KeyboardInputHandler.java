@@ -43,9 +43,9 @@ public class KeyboardInputHandler implements InputHandler {
 
     public Guess generateGuessFromString(String input){
         Vector<Peg> pegList = new Vector<>();
-        ColourFactory colourFactory = new ColourFactory();
+
         for(char ch: input.toCharArray()){
-            pegList.add(new Peg(colourFactory.generateColour(ch)));
+            pegList.add(new Peg(ColourFactory.generateColour(ch)));
         }
 
         return new Guess(pegList);

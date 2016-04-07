@@ -25,9 +25,8 @@ public class SecretCode {
     public void generateSecretCode(){
         pegs.clear();
 
-        ColourFactory colourFactory = new ColourFactory();
         for(int i = 0; i < pegCount; i++) {
-            pegs.add(new Peg(colourFactory.generateRandomColour()));
+            pegs.add(new Peg(ColourFactory.generateRandomColour()));
         }
     }
 }
