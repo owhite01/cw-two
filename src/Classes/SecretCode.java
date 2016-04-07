@@ -19,6 +19,7 @@ public class SecretCode {
 
     public Vector<Peg> getPegs() {
         return pegs;
+
     }
 
     public void generateSecretCode(){

@@ -20,8 +20,8 @@ public class TextRenderer implements Renderer {
                 if (board.getResults().elementAt(verticalPosition).getPegs().size() == 0){
                     System.out.print("No pegs");
                 }else{
-                    int bla = board.getResults().elementAt(verticalPosition).getPegs().size();
-                    for(int pegIndex = 0; pegIndex < bla; pegIndex++){
+                    int pegCount = board.getResults().elementAt(verticalPosition).getPegs().size();
+                    for(int pegIndex = 0; pegIndex < pegCount; pegIndex++){
                         ResultPeg currentPeg = board.getResults().elementAt(verticalPosition).getPegs().elementAt(pegIndex);
                         currentPeg.render();
                         System.out.print(" ");

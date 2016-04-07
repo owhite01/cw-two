@@ -126,4 +126,117 @@ public class BoardTests {
 
     }
 
+    @Test
+    public void testBlackPegIsCreatedAsExpected(){
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(4,4, secretCode);
+        secretCode.generateSecretCode();
+        Vector<Peg> pegList = new Vector<>(4);
+        for(int i = 0; i<4; i++){
+            pegList.add(new Peg(new Blue()));
+        }
+        Guess testGuess = new Guess(pegList);
+
+        secretCode.getPegs().clear();
+        secretCode.getPegs().add(new Peg(new Blue()));
+        secretCode.getPegs().add(new Peg(new Red()));
+        secretCode.getPegs().add(new Peg(new Yellow()));
+        secretCode.getPegs().add(new Peg(new Purple()));
+
+        newBoard.assignGuessToSlots(testGuess);
+        Vector<ResultPeg> resultPegs = newBoard.getResults().elementAt(0).getPegs();
+        assertEquals(1, resultPegs.size());
+        assertTrue(resultPegs.elementAt(0) instanceof BlackResultPeg);
+    }
+
+    @Test
+    public void testWhitePegIsCreatedAsExpected(){
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(4,4, secretCode);
+        secretCode.generateSecretCode();
+        Vector<Peg> pegList = new Vector<>(4);
+
+        pegList.add(new Peg(new Blue()));
+        pegList.add(new Peg(new Green()));
+        pegList.add(new Peg(new Yellow()));
+        pegList.add(new Peg(new Blue()));
+
+        Guess testGuess = new Guess(pegList);
+
+
+        secretCode.getPegs().clear();
+        secretCode.getPegs().add(new Peg(new Orange()));
+        secretCode.getPegs().add(new Peg(new Blue()));
+        secretCode.getPegs().add(new Peg(new Red()));
+        secretCode.getPegs().add(new Peg(new Purple()));
+
+        newBoard.assignGuessToSlots(testGuess);
+        Vector<ResultPeg> resultPegs = newBoard.getResults().elementAt(0).getPegs();
+        assertEquals(1, resultPegs.size());
+        assertTrue(resultPegs.elementAt(0) instanceof WhiteResultPeg);
+
+    }
+
+    @Test
+    public void testIfDuplicatesAreInTheGuessOnlyOneWhiteIsReturned(){
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(4,4, secretCode);
+        secretCode.generateSecretCode();
+        Vector<Peg> pegList = new Vector<>(4);
+
+        pegList.add(new Peg(new Blue()));
+        pegList.add(new Peg(new Green()));
+        pegList.add(new Peg(new Blue()));
+        pegList.add(new Peg(new Blue()));
+
+        Guess testGuess = new Guess(pegList);
+
+
+        secretCode.getPegs().clear();
+        secretCode.getPegs().add(new Peg(new Orange()));
+        secretCode.getPegs().add(new Peg(new Blue()));
+        secretCode.getPegs().add(new Peg(new Red()));
+        secretCode.getPegs().add(new Peg(new Purple()));
+
+        newBoard.assignGuessToSlots(testGuess);
+        Vector<ResultPeg> resultPegs = newBoard.getResults().elementAt(0).getPegs();
+        assertEquals(1, resultPegs.size());
+        assertTrue(resultPegs.elementAt(0) instanceof WhiteResultPeg);
+
+    }
+
+    @Test
+    public void testToCheckNoPegsAreReturnedAsExpected(){
+        SecretCode secretCode = new SecretCode(4);
+        Board newBoard = new Board(4,4, secretCode);
+        secretCode.generateSecretCode();
+        Vector<Peg> pegList = new Vector<>(4);
+
+        pegList.add(new Peg(new Yellow()));
+        pegList.add(new Peg(new Yellow()));
+        pegList.add(new Peg(new Yellow()));
+        pegList.add(new Peg(new Yellow()));
+
+        Guess testGuess = new Guess(pegList);
+
+
+        secretCode.getPegs().clear();
+        secretCode.getPegs().add(new Peg(new Orange()));
+        secretCode.getPegs().add(new Peg(new Blue()));
+        secretCode.getPegs().add(new Peg(new Red()));
+        secretCode.getPegs().add(new Peg(new Purple()));
+
+        newBoard.assignGuessToSlots(testGuess);
+        Vector<ResultPeg> resultPegs = newBoard.getResults().elementAt(0).getPegs();
+        assertEquals(0, resultPegs.size());
+
+    }
+
+
+
+    @Test
+    public void ensureMaxLengthOfResultListIsLengthOfSecretCode(){
+
+    }
+
 }
