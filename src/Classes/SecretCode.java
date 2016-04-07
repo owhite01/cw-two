@@ -17,11 +17,10 @@ public class SecretCode {
     }
 
 
-    Vector<Peg> getPegs() {
+    public Vector<Peg> getPegs() {
         return pegs;
     }
 
-    //TODO make sure that ensures that there are no duplications.
     public void generateSecretCode(){
         pegs.clear();
 
