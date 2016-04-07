@@ -3,9 +3,10 @@ package Classes;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.util.Observable;
 
 
-public class GameOverState implements GameState {
+public class GameOverState extends Observable implements GameState {
     @Override
     public void init() {
 
@@ -23,13 +24,17 @@ public class GameOverState implements GameState {
 
     @Override
     public void update() {
-        String userInput = "";
+        String userInput;
         System.out.print("Enter Y for another game or anything else to quit: ");
 
         try{
             BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
             userInput = bufferRead.readLine();
-            //TODO add a check to determine if user wants to quit the game.
+
+            if(userInput.equals("Y")){
+                setChanged();
+                notifyObservers();
+            }
 
         }catch (IOException e) {
             System.out.println(e.toString());

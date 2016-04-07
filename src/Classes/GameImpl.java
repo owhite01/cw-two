@@ -2,8 +2,10 @@ package Classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
+import java.util.Observable;
 
-public class GameImpl extends GameAbstractImpl {
+public class GameImpl extends GameAbstractImpl implements Observer {
 
     private Renderer renderer;
     private InputHandler inputHandler;
@@ -12,6 +14,8 @@ public class GameImpl extends GameAbstractImpl {
 
     private int currentState;
     private List<GameState>  gameStates;
+
+    private boolean shouldQuit;
 
     public GameImpl(boolean easy) {
        super(easy);
@@ -34,7 +38,10 @@ public class GameImpl extends GameAbstractImpl {
 
         GameOverState gameOverState = new GameOverState();
         gameOverState.init();
+        gameOverState.addObserver(this);
         gameStates.add(gameOverState);
+
+        shouldQuit = false;
 
     }
 
@@ -44,8 +51,7 @@ public class GameImpl extends GameAbstractImpl {
         //init the initial state.
         gameStates.get(currentState).enter();
 
-        //TODO make this loop quit if the user chooses to end the game.
-        while(true) {
+        while(!shouldQuit) {
             gameStates.get(currentState).update();
 
             if(gameStates.get(currentState).isFinished()) {
@@ -59,6 +65,15 @@ public class GameImpl extends GameAbstractImpl {
 
                 gameStates.get(currentState).enter();
             }
+        }
+    }
+
+    @Override
+    public void update(Observable obs, Object obj)
+    {
+        if (obs == gameStates.get(currentState))
+        {
+            shouldQuit = true;
         }
     }
 }
