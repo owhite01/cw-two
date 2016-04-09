@@ -42,37 +42,26 @@ public class PlayState implements GameState {
 
     @Override
     public void update() {
-        System.out.println("You have " + currentPlayCounter + " guesses left");
-        System.out.println("");
-        System.out.println("What is your next guess?\n" +
-                "Type in the characters for your guess and press enter.");
+        renderer.renderUserInputPrompt(currentPlayCounter);
 
         Guess userGuess = inputHandler.queryGuess();
         board.assignGuessToSlots(userGuess);
         resultContainer.generateResultEntryFromGuess(userGuess);
 
-        if(shouldShowSecretCode) {
-            for(Peg peg : secretCode.getPegs()) {
-                System.out.print(peg.getColour().getClass().getSimpleName().charAt(0));
-            }
-            System.out.println(" Secret Code");
-        }
-        else {
-            System.out.println(".... Secret Code");
-        }
+        renderer.renderSecretCodeOutput(shouldShowSecretCode, secretCode);
 
         renderer.renderStateOfBoard(board, resultContainer);
         System.out.println("");
 
         if(checkWinCondition()){
-            System.out.println("You solved the puzzle! Good job.");
+            renderer.renderGameWon();
             stateActive = false;
         }
 
         currentPlayCounter--;
 
         if(currentPlayCounter == 0){
-            System.out.println("You did not solve the puzzle. Too bad.");
+            renderer.renderGameLost();
             stateActive = false;
         }
 

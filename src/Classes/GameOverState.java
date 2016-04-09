@@ -7,6 +7,13 @@ import java.util.Observable;
 
 
 public class GameOverState extends Observable implements GameState {
+
+    private Renderer renderer;
+
+    public GameOverState(Renderer renderer) {
+        this.renderer = renderer;
+    }
+
     @Override
     public void init() {
 
@@ -25,8 +32,8 @@ public class GameOverState extends Observable implements GameState {
     @Override
     public void update() {
         String userInput;
-        System.out.print("Enter Y for another game or anything else to quit: ");
 
+        renderer.renderGameOver();
         try{
             BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
             userInput = bufferRead.readLine();

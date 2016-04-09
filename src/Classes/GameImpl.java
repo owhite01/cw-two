@@ -28,7 +28,7 @@ public class GameImpl extends GameAbstractImpl implements Observer {
 
         gameStates = new ArrayList<>();
 
-        IntroState introState = new IntroState(numberOfRounds, secretCode);
+        IntroState introState = new IntroState(renderer, numberOfRounds, secretCode);
         introState.init();
         gameStates.add(introState);
 
@@ -36,7 +36,7 @@ public class GameImpl extends GameAbstractImpl implements Observer {
         playState.init();
         gameStates.add(playState);
 
-        GameOverState gameOverState = new GameOverState();
+        GameOverState gameOverState = new GameOverState(renderer);
         gameOverState.init();
         gameOverState.addObserver(this);
         gameStates.add(gameOverState);
