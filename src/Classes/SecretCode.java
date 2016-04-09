@@ -23,7 +23,7 @@ public class SecretCode {
         try {
             ColourContainer factory = (ColourContainer)MastermindDriver.getBeanFactory().getBean("colourContainer");
             for (int i = 0; i < pegCount; i++) {
-                pegs.add(new Peg(factory.generateRandomColour()));
+                pegs.add(new Peg(factory.getRandomColour()));
             }
         } catch(Exception e){
             System.out.println(e.getMessage());

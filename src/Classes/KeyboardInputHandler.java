@@ -45,7 +45,7 @@ public class KeyboardInputHandler implements InputHandler {
         try {
             ColourContainer factory = (ColourContainer) MastermindDriver.getBeanFactory().getBean("colourContainer");
             for (char ch : input.toCharArray()) {
-                pegList.add(new Peg(factory.generateColour(ch)));
+                pegList.add(new Peg(factory.getColour(ch)));
             }
         } catch(Exception e) {
             System.out.println(e.getMessage());
