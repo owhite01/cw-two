@@ -10,6 +10,12 @@ public class ResultContainer {
     public ResultContainer(SecretCode secretCode) {
         this.resultEntries = new Vector<>();
         this.secretCode = secretCode;
+
+        reset();
+    }
+
+    public void reset() {
+        resultEntries.clear();
     }
 
     public void generateResultEntryFromGuess(Guess guess) {

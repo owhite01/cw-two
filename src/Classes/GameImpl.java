@@ -59,7 +59,7 @@ public class GameImpl extends GameAbstractImpl implements Observer {
                 gameStates.get(currentState).exit();
 
                 currentState++;
-                if(currentState > gameStates.size()) {
+                if(currentState >= gameStates.size()) {
                     currentState = 0;
                 }
 

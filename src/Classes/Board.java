@@ -1,6 +1,5 @@
 package Classes;
 
-import java.util.Arrays;
 import java.util.Vector;
 
 public class Board {
@@ -22,7 +21,15 @@ public class Board {
 
         width = sizeX;
         height = sizeY;
+
+        reset();
+    }
+
+    public void reset() {
+
         nextAvailableSlot = 0;
+
+        slots.clear();
 
         for (int verticalPosition = 0; verticalPosition < height; verticalPosition++) {
             for (int horizontalPosition = 0; horizontalPosition < width; horizontalPosition++) {

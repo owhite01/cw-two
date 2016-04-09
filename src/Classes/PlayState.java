@@ -33,6 +33,8 @@ public class PlayState implements GameState {
     public void enter() {
         currentPlayCounter = initialPlayCounter;
         stateActive = true;
+        board.reset();
+        resultContainer.reset();
     }
 
     @Override

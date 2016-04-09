@@ -26,7 +26,7 @@
     </bean>
 
     <bean id="game" class="Classes.GameImpl">
-        <constructor-arg value="false"/>
+        <constructor-arg value="true"/>
         <constructor-arg ref="renderer"/>
         <constructor-arg ref="inputHandler"/>
         <constructor-arg ref="secretCode"/>
