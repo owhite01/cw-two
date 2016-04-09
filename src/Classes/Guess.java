@@ -9,7 +9,6 @@ public class Guess {
 
     public Guess(Vector<Peg> pegs) {
         pegList = pegs;
-
     }
 
     public Vector<Peg> getPegs() {

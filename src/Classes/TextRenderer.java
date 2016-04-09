@@ -1,6 +1,8 @@
 package Classes;
 
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 public class TextRenderer implements Renderer {
 
     @Override
@@ -9,7 +11,7 @@ public class TextRenderer implements Renderer {
             for(int horizontalPosition = 0; horizontalPosition < board.getWidth(); horizontalPosition++){
                 Peg currentPeg = board.getSlotValue(horizontalPosition, verticalPosition).getPeg();
                 if(currentPeg != null) {
-                    currentPeg.getColour().render();
+                    System.out.print(currentPeg.getColour().getClass().getSimpleName().charAt(0));
                 }
                 else{
                     System.out.print(".");
@@ -24,7 +26,7 @@ public class TextRenderer implements Renderer {
                     for(int pegIndex = 0; pegIndex < pegCount; pegIndex++){
                         ResultPeg currentPeg = board.getResults().elementAt(verticalPosition).getResultPegs().elementAt(pegIndex);
                         //TODO make this the be done by the renderer.
-                        System.out.println(currentPeg.getClass());
+                        System.out.println(currentPeg.getClass().getSimpleName());
                         currentPeg.render();
                         System.out.print(" ");
                     }

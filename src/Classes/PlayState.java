@@ -49,7 +49,7 @@ public class PlayState implements GameState {
 
         if(shouldShowSecretCode) {
             for(Peg peg : secretCode.getPegs()) {
-                peg.getColour().render();
+                System.out.print(peg.getColour().getClass().getSimpleName());
             }
             System.out.println(" Secret Code");
         }
