@@ -5,6 +5,7 @@ public class PlayState implements GameState {
     private Renderer renderer;
     private InputHandler inputHandler;
     private Board board;
+    private ResultContainer resultContainer;
     private int initialPlayCounter;
     private int currentPlayCounter;
     private boolean stateActive;
@@ -14,12 +15,14 @@ public class PlayState implements GameState {
     public PlayState(int numberOfRoundsInGame, InputHandler inInputHandler, Renderer outputRenderer, boolean showSecretCode, SecretCode inSecretCode) {
         renderer = outputRenderer;
         inputHandler = inInputHandler;
+        secretCode = inSecretCode;
 
         board = new Board(Settings.CodeLength, Settings.NumberOfRounds, inSecretCode);
+        resultContainer = new ResultContainer(secretCode);
+
         initialPlayCounter = numberOfRoundsInGame;
         currentPlayCounter = numberOfRoundsInGame;
         shouldShowSecretCode = showSecretCode;
-        secretCode = inSecretCode;
     }
 
     @Override
@@ -46,6 +49,7 @@ public class PlayState implements GameState {
 
         Guess userGuess = inputHandler.queryGuess();
         board.assignGuessToSlots(userGuess);
+        resultContainer.generateResultEntryFromGuess(userGuess);
 
         if(shouldShowSecretCode) {
             for(Peg peg : secretCode.getPegs()) {
@@ -57,7 +61,7 @@ public class PlayState implements GameState {
             System.out.println(".... Secret Code");
         }
 
-        renderer.renderBoard(board);
+        renderer.renderStateOfBoard(board, resultContainer);
         System.out.println("");
 
         if(checkWinCondition()){
@@ -81,13 +85,13 @@ public class PlayState implements GameState {
     }
 
     private boolean checkWinCondition() {
-        Result latestResult = board.getResults().lastElement();
+        ResultEntry latestResultEntry = resultContainer.getResultEntries().lastElement();
 
-        if(latestResult.getResultPegs().size() < board.getWidth()){
+        if(latestResultEntry.getResultPegs().size() < board.getWidth()){
             return false;
         }
 
-        for(ResultPeg resultPeg: latestResult.getResultPegs()){
+        for(ResultPeg resultPeg: latestResultEntry.getResultPegs()){
             if(!(resultPeg instanceof BlackResultPeg)){
                 return false;
             }

@@ -2,10 +2,10 @@ package Classes;
 
 import java.util.Vector;
 
-public class Result {
+public class ResultEntry {
     private Vector<ResultPeg> pegs;
 
-    public Result() {
+    public ResultEntry() {
         pegs = new Vector<>();
     }
 

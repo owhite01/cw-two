@@ -1,5 +1,5 @@
 package Classes;
 
 public interface Renderer {
-    void renderBoard(Board board);
+    void renderStateOfBoard(Board board, ResultContainer resultContainer);
 }
