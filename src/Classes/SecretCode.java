@@ -5,11 +5,13 @@ import java.util.Vector;
 public class SecretCode {
     private Vector<Peg> pegs;
     private int pegCount;
+    private ColourContainer colourContainer;
 
-    public SecretCode(int inPegCount) {
+    public SecretCode(int inPegCount, ColourContainer inColourContainer) {
         pegs = new Vector<>();
 
         pegCount = inPegCount;
+        colourContainer = inColourContainer;
         generateSecretCode();
     }
 
@@ -19,14 +21,8 @@ public class SecretCode {
 
     public void generateSecretCode(){
         pegs.clear();
-
-        try {
-            ColourContainer factory = (ColourContainer)MastermindDriver.getBeanFactory().getBean("colourContainer");
-            for (int i = 0; i < pegCount; i++) {
-                pegs.add(new Peg(factory.getRandomColour()));
-            }
-        } catch(Exception e){
-            System.out.println(e.getMessage());
+        for (int i = 0; i < pegCount; i++) {
+            pegs.add(new Peg(colourContainer.getRandomColour()));
         }
     }
 }

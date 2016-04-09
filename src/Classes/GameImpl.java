@@ -7,27 +7,26 @@ import java.util.Observable;
 
 public class GameImpl extends GameAbstractImpl implements Observer {
 
-    private Renderer renderer;
-    private InputHandler inputHandler;
+    private Renderer renderer = null;
+    private InputHandler inputHandler = null;
+    private SecretCode secretCode = null;
     private int numberOfRounds;
-    private SecretCode secretCode;
 
     private int currentState;
     private List<GameState>  gameStates;
 
     private boolean shouldQuit;
 
-    public GameImpl(boolean easy, Renderer inRenderer, InputHandler inInputHandler) {
+    public GameImpl(boolean easy, Renderer inRenderer, InputHandler inInputHandler, SecretCode inSecretCode) {
        super(easy);
 
         renderer = inRenderer;
         inputHandler = inInputHandler;
+        secretCode = inSecretCode;
 
         numberOfRounds = Settings.NumberOfRounds;
 
         gameStates = new ArrayList<>();
-
-        secretCode = new SecretCode(Settings.CodeLength);
 
         IntroState introState = new IntroState(numberOfRounds, secretCode);
         introState.init();

@@ -12,20 +12,53 @@ import static org.junit.Assert.*;
 public class SecretCodeTests {
     @Test
     public void generateSecretCodeGeneratesACodeWithTheRightPegCountOnConstruction() {
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         assertEquals(secretCode.getPegs().size(), 4);
     }
 
     @Test
     public void generateSecretCodeGeneratesACodeWithTheExpectedPegCount(){
-        SecretCode secretCode = new SecretCode(5);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(5, colourContainer);
         secretCode.generateSecretCode();
         assertEquals(secretCode.getPegs().size(), 5);
     }
 
     @Test
     public void generateSecretCodeGeneratesANewCodeWhenCalledASecondTime(){
-        SecretCode secretCode = new SecretCode(5);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(5, colourContainer);
         secretCode.generateSecretCode();
         List<Peg> firstCode = new ArrayList<>(secretCode.getPegs());
         secretCode.generateSecretCode();

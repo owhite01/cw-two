@@ -3,6 +3,8 @@ import Classes.*;
 import org.junit.Test;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import static org.junit.Assert.*;
@@ -10,33 +12,88 @@ import static org.junit.Assert.*;
 public class BoardTests {
     @Test
     public void constructorCreatesBoardWithExpectedDimension(){
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         Board newBoard = new Board(5,5, secretCode);
         assertEquals(newBoard.getHeight(), 5);
         assertEquals(newBoard.getWidth(), 5);
     }
     @Test(expected=IllegalArgumentException.class)
     public void constructorCreatesThrowsExceptionWhenNegativeValuesArePassed(){
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         Board newBoard = new Board(-5,-5, secretCode);
     }
 
     @Test(expected=IllegalArgumentException.class)
     public void constructorCreatesThrowsExceptionWhenZeroValuesArePassed(){
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         Board newBoard = new Board(0,0, secretCode);
     }
 
     @Test(expected=ArrayIndexOutOfBoundsException.class)
     public void getSlotReturnsValueOutOfRangeWhenPassedTooLargeValues(){
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4,colourContainer);
         Board newBoard = new Board(9,9, secretCode);
         newBoard.getSlotValue(10,10);
     }
 
     @Test
     public void getSlotReturnsAValidSlotWhenPassedValidValues() {
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         Board newBoard = new Board(9,9, secretCode);
         Slot testSlot = newBoard.getSlotValue(8,8);
 
@@ -45,7 +102,18 @@ public class BoardTests {
 
     @Test (expected=IllegalArgumentException.class)
     public void boardThrowsIfGuessHasMorePegsThanWidthOfTheBoard(){
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         Board newBoard = new Board(4,4, secretCode);
         Vector<Peg> pegList = new Vector<>(5);
         for(int i = 0; i<5; i++){
@@ -58,7 +126,18 @@ public class BoardTests {
 
     @Test
     public void boardAssignsCorrectSlotsFromGuess(){
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         Board newBoard = new Board(4,4, secretCode);
         Vector<Peg> pegList = new Vector<>(4);
         for(int i = 0; i<4; i++){
@@ -76,7 +155,18 @@ public class BoardTests {
 
     @Test
     public void boardInsertsGuessAfterEachOtherAsExpected(){
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         Board newBoard = new Board(4,4, secretCode);
         Vector<Peg> pegList = new Vector<>(4);
         pegList.add(new Peg(new Blue()));
@@ -102,7 +192,18 @@ public class BoardTests {
 
     @Test (expected=IndexOutOfBoundsException.class)
     public void boardThrowsIfUserInsertsMoreGuessesThanTheBoardCanContain(){
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         Board newBoard = new Board(4,4, secretCode);
         Vector<Peg> pegList = new Vector<>(4);
         pegList.add(new Peg(new Blue()));
@@ -118,7 +219,18 @@ public class BoardTests {
 
     @Test
     public void testBlackPegIsCreatedAsExpected(){
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         Board newBoard = new Board(4,4, secretCode);
         secretCode.generateSecretCode();
         Vector<Peg> pegList = new Vector<>(4);
@@ -141,7 +253,18 @@ public class BoardTests {
 
     @Test
     public void testWhitePegIsCreatedAsExpected(){
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         Board newBoard = new Board(4,4, secretCode);
         secretCode.generateSecretCode();
         Vector<Peg> pegList = new Vector<>(4);
@@ -169,7 +292,18 @@ public class BoardTests {
 
     @Test
     public void testIfDuplicatesAreInTheGuessOnlyOneWhiteIsReturned(){
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         Board newBoard = new Board(4,4, secretCode);
         secretCode.generateSecretCode();
         Vector<Peg> pegList = new Vector<>(4);
@@ -197,7 +331,18 @@ public class BoardTests {
 
     @Test
     public void testToCheckNoPegsAreReturnedAsExpected(){
-        SecretCode secretCode = new SecretCode(4);
+        List<Colour> colours = new ArrayList<>();
+        colours.add(new Blue());
+        colours.add(new Green());
+        colours.add(new Yellow());
+        colours.add(new Purple());
+        colours.add(new Red());
+        colours.add(new Orange());
+
+        ColourContainer colourContainer = new ColourContainer();
+        colourContainer.setAvailableColours(colours);
+
+        SecretCode secretCode = new SecretCode(4, colourContainer);
         Board newBoard = new Board(4,4, secretCode);
         secretCode.generateSecretCode();
         Vector<Peg> pegList = new Vector<>(4);
