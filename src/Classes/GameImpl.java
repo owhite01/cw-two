@@ -20,12 +20,22 @@ public class GameImpl extends GameAbstractImpl implements Observer {
     public GameImpl(boolean easy) {
        super(easy);
 
-        renderer = RendererFactory.generateRenderer();
-        inputHandler = InputHandlerFactory.generateInputHandler(Settings.CodeLength);
+        try {
+            renderer = (Renderer)MastermindDriver.getBeanFactory().getBean("renderer");
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        try{
+            inputHandler = (InputHandler)MastermindDriver.getBeanFactory().getBean("inputHandler");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         numberOfRounds = Settings.NumberOfRounds;
 
         gameStates = new ArrayList<>();
-        //TODO data drives the length of the secret code
+
         secretCode = new SecretCode(Settings.CodeLength);
 
         IntroState introState = new IntroState(numberOfRounds, secretCode);

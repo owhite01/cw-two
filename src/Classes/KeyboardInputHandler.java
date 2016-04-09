@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 import java.util.Vector;
 
 public class KeyboardInputHandler implements InputHandler {
-    //TODO add mock for the bufferreader to enable testing
-    //TODO replace systemout with observer pattern for the renderer
 
     private KeyboardInputValidator inputValidator;
 
