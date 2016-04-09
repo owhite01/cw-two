@@ -98,11 +98,6 @@ public class BoardTests {
         assertTrue(newBoard.getSlotValue(1,1).getPeg().getColour() instanceof Red);
         assertTrue(newBoard.getSlotValue(2,1).getPeg().getColour() instanceof Yellow);
         assertTrue(newBoard.getSlotValue(3,1).getPeg().getColour() instanceof Purple);
-
-
-
-
-
     }
 
     @Test (expected=IndexOutOfBoundsException.class)
@@ -119,9 +114,6 @@ public class BoardTests {
         for(int i = 0; i<20;i++){
             newBoard.assignGuessToSlots(testGuess);
         }
-
-
-
     }
 
     @Test

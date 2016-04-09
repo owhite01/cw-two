@@ -17,20 +17,11 @@ public class GameImpl extends GameAbstractImpl implements Observer {
 
     private boolean shouldQuit;
 
-    public GameImpl(boolean easy) {
+    public GameImpl(boolean easy, Renderer inRenderer, InputHandler inInputHandler) {
        super(easy);
 
-        try {
-            renderer = (Renderer)MastermindDriver.getBeanFactory().getBean("renderer");
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-        try{
-            inputHandler = (InputHandler)MastermindDriver.getBeanFactory().getBean("inputHandler");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        renderer = inRenderer;
+        inputHandler = inInputHandler;
 
         numberOfRounds = Settings.NumberOfRounds;
 

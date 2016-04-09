@@ -24,4 +24,11 @@
         <constructor-arg value="4"/>
         <constructor-arg ref="colourContainer"/>
     </bean>
+
+    <bean id="game" class="Classes.GameImpl">
+        <constructor-arg value="true"/>
+        <constructor-arg ref="renderer"/>
+        <constructor-arg ref="inputHandler"/>
+    </bean>
+
 </beans>
