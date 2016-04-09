@@ -98,11 +98,11 @@ public class Board {
         }
 
         for(int blackPegCountIndex = 0; blackPegCountIndex < blackPegCount; blackPegCountIndex++){
-            newResult.getPegs().add(new BlackResultPeg());
+            newResult.getResultPegs().add(new BlackResultPeg());
         }
 
         for(int whitePegCountIndex = 0; whitePegCountIndex < whitePegCount; whitePegCountIndex++){
-            newResult.getPegs().add(new WhiteResultPeg());
+            newResult.getResultPegs().add(new WhiteResultPeg());
         }
 
         results.add(newResult);

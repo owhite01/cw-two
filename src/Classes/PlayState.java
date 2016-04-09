@@ -83,11 +83,11 @@ public class PlayState implements GameState {
     private boolean checkWinCondition() {
         Result latestResult = board.getResults().lastElement();
 
-        if(latestResult.getPegs().size() < board.getWidth()){
+        if(latestResult.getResultPegs().size() < board.getWidth()){
             return false;
         }
 
-        for(ResultPeg resultPeg: latestResult.getPegs()){
+        for(ResultPeg resultPeg: latestResult.getResultPegs()){
             if(!(resultPeg instanceof BlackResultPeg)){
                 return false;
             }

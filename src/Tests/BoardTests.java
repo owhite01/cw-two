@@ -3,8 +3,6 @@ import Classes.*;
 import org.junit.Test;
 
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
 import static org.junit.Assert.*;
@@ -144,7 +142,7 @@ public class BoardTests {
         secretCode.getPegs().add(new Peg(new Purple()));
 
         newBoard.assignGuessToSlots(testGuess);
-        Vector<ResultPeg> resultPegs = newBoard.getResults().elementAt(0).getPegs();
+        Vector<ResultPeg> resultPegs = newBoard.getResults().elementAt(0).getResultPegs();
         assertEquals(1, resultPegs.size());
         assertTrue(resultPegs.elementAt(0) instanceof BlackResultPeg);
     }
@@ -171,7 +169,7 @@ public class BoardTests {
         secretCode.getPegs().add(new Peg(new Purple()));
 
         newBoard.assignGuessToSlots(testGuess);
-        Vector<ResultPeg> resultPegs = newBoard.getResults().elementAt(0).getPegs();
+        Vector<ResultPeg> resultPegs = newBoard.getResults().elementAt(0).getResultPegs();
         assertEquals(1, resultPegs.size());
         assertTrue(resultPegs.elementAt(0) instanceof WhiteResultPeg);
 
@@ -199,7 +197,7 @@ public class BoardTests {
         secretCode.getPegs().add(new Peg(new Purple()));
 
         newBoard.assignGuessToSlots(testGuess);
-        Vector<ResultPeg> resultPegs = newBoard.getResults().elementAt(0).getPegs();
+        Vector<ResultPeg> resultPegs = newBoard.getResults().elementAt(0).getResultPegs();
         assertEquals(1, resultPegs.size());
         assertTrue(resultPegs.elementAt(0) instanceof WhiteResultPeg);
 
@@ -227,7 +225,7 @@ public class BoardTests {
         secretCode.getPegs().add(new Peg(new Purple()));
 
         newBoard.assignGuessToSlots(testGuess);
-        Vector<ResultPeg> resultPegs = newBoard.getResults().elementAt(0).getPegs();
+        Vector<ResultPeg> resultPegs = newBoard.getResults().elementAt(0).getResultPegs();
         assertEquals(0, resultPegs.size());
 
     }

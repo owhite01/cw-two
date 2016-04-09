@@ -9,7 +9,7 @@ public class Result {
         pegs = new Vector<>();
     }
 
-    public Vector<ResultPeg> getPegs() {
+    public Vector<ResultPeg> getResultPegs() {
 
         return pegs;
     }

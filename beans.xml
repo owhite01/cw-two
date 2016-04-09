@@ -4,6 +4,18 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="colourContainer" class="Classes.ColourContainer" scope="singleton">
+        <property name="availableColours">
+            <list>
+                <bean id="blue" class="Classes.Blue"/>
+                <bean id="yellow" class="Classes.Yellow"/>
+                <bean id="green" class="Classes.Green"/>
+                <bean id="orange" class="Classes.Orange"/>
+                <bean id="red" class="Classes.Red"/>
+                <bean id="purple" class="Classes.Purple"/>
+            </list>
+        </property>
+    </bean>
     <bean id="renderer" class="Classes.TextRenderer"/>
     <bean id="inputHandler" class="Classes.KeyboardInputHandler">
         <constructor-arg ref = "inputValidator"/>

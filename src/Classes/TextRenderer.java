@@ -17,12 +17,14 @@ public class TextRenderer implements Renderer {
             }
             if(board.getResults().size() > verticalPosition){
                 System.out.print(" Result: ");
-                if (board.getResults().elementAt(verticalPosition).getPegs().size() == 0){
+                if (board.getResults().elementAt(verticalPosition).getResultPegs().size() == 0){
                     System.out.print("No pegs");
                 }else{
-                    int pegCount = board.getResults().elementAt(verticalPosition).getPegs().size();
+                    int pegCount = board.getResults().elementAt(verticalPosition).getResultPegs().size();
                     for(int pegIndex = 0; pegIndex < pegCount; pegIndex++){
-                        ResultPeg currentPeg = board.getResults().elementAt(verticalPosition).getPegs().elementAt(pegIndex);
+                        ResultPeg currentPeg = board.getResults().elementAt(verticalPosition).getResultPegs().elementAt(pegIndex);
+                        //TODO make this the be done by the renderer.
+                        System.out.println(currentPeg.getClass());
                         currentPeg.render();
                         System.out.print(" ");
                     }

@@ -1,8 +1,5 @@
 package Classes;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.Vector;
 
 public class SecretCode {
@@ -16,17 +13,20 @@ public class SecretCode {
         generateSecretCode();
     }
 
-
     public Vector<Peg> getPegs() {
         return pegs;
-
     }
 
     public void generateSecretCode(){
         pegs.clear();
 
-        for(int i = 0; i < pegCount; i++) {
-            pegs.add(new Peg(ColourFactory.generateRandomColour()));
+        try {
+            ColourContainer factory = (ColourContainer)MastermindDriver.getBeanFactory().getBean("colourContainer");
+            for (int i = 0; i < pegCount; i++) {
+                pegs.add(new Peg(factory.generateRandomColour()));
+            }
+        } catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 }

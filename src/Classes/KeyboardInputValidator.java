@@ -32,8 +32,6 @@ public class KeyboardInputValidator {
             }
         }
 
-
-
         return true;
     }
 
