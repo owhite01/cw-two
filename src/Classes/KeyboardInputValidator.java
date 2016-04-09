@@ -3,16 +3,21 @@ package Classes;
 public class KeyboardInputValidator {
 
     private int guessLength;
+    private ColourContainer colourContainer;
 
-    public KeyboardInputValidator(int inGuessLength) {
+    public KeyboardInputValidator(int inGuessLength, ColourContainer inColourContainer) {
         guessLength = inGuessLength;
-
+        colourContainer = inColourContainer;
     }
 
     public boolean validate(String input){
-        //TODO this should be data driven
-        //TODO should allow users to enter lower case
-        String validCharacters = "BGOPRY";
+        StringBuilder sb = new StringBuilder(colourContainer.getAvailableColours().size());
+
+        for(Colour colour : colourContainer.getAvailableColours()){
+            sb.append(colour.getClass().getSimpleName());
+        }
+
+        String validCharacters = sb.toString();
 
         if(input.isEmpty()){
             return false;
